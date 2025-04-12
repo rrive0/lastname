@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ส่งข้อความไป Discord</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: #1e1e1e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label, select, textarea, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    select, textarea {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: black;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      background: linear-gradient(45deg, #5e5e5e, #888);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #777, #aaa);
+    }
+
+    .status {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>REPORT MEMBER</h2>
+
+    <label for="group">เลือกหัวข้อ RP & LASTNAME</label>
+    <select id="group">
+      <option value="LASTNAME">LASTNAME</option>
+      <option value="ROPLAY">ROPLAY</option>
+    </select>
+
+    <label for="message">ข้อความ:</label>
+    <textarea id="message" placeholder="พิมพ์ข้อความที่ต้องการ..."></textarea>
+
+    <button onclick="sendToDiscord()">ส่งข้อความ</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    async function sendToDiscord() {
+      const group = document.getElementById("group").value;
+      const message = document.getElementById("message").value;
+
+      if (!message.trim()) {
+        document.getElementById("status").textContent = "⚠️ กรุณาพิมพ์ข้อความก่อนส่ง";
+        return;
+      }
+      <img src="https://img2.pic.in.th/pic/LOGO8cdb8462a9bd922b.png" alt="หัวข้อเว็บ" class="header-image" />
+      // 👉 ใส่ webhook ตามหัวข้อ
+      const webhookMap = {
+        LASTNAME: "https://discord.com/api/webhooks/1360608656349200434/gQYcrqXtsE_GcQxjxer3f4oe1GKpi3v_6rPNhEx-vmazOVkJ_1yMq2wRZmy7JWDk_eZt",
+        ROPLAY: "https://discord.com/api/webhooks/1360615231126114495/GMd0SrY61bkCvvxIf6561G_kFLvszqFqQHaqtV1EG55H6KHJQ5kHt-M-E3CAMciMVtnf"
+      };
+
+      const webhookUrl = webhookMap[group];
+
+      const payload = {
+        content: `แจ้งเรื่อง: ${group}\n\n REPOST:\n${message}`
+      };
+
+      try {
+        const res = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          document.getElementById("status").textContent = "✅ ส่งข้อความเรียบร้อยแล้ว!";
+          document.getElementById("message").value = "";
+        } else {
+          document.getElementById("status").textContent = "❌ ส่งไม่สำเร็จ ลองใหม่อีกครั้ง";
+        }
+      } catch (err) {
+        document.getElementById("status").textContent = "❌ เกิดข้อผิดพลาด: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>

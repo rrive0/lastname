@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LASTNAME YOUNGBXY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #2c2c2c);
+      height: 100vh;
+      overflow: hidden;
+      color: #f0f0f0;
+    }
+
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .center-content h1 {
+      font-size: 64px;
+      color: #c0c0c0;
+      letter-spacing: 4px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .horizontal-menu {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .menu-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffffcc;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-button i {
+      font-size: 20px;
+    }
+
+    .menu-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: 0.5s;
+    }
+
+    .menu-button:hover::before {
+      left: 100%;
+    }
+
+    .menu-button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(192, 192, 192, 0.2);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .footer span {
+      color: #ccc;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      opacity: 0.8;
+      font-size: 10px;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) translateX(-10vw);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .center-content h1 {
+        font-size: 40px;
+      }
+
+      .horizontal-menu {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .menu-button {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center-content">
+    <h1>LASTNAME YOUNGBXY</h1>
+    <div class="horizontal-menu">
+      <a href="youngbxy.html" class="menu-button"><i class="ri-user-star-line"></i> LASTNAME YOUNGBXY</a>
+      <a href="roplay.html" class="menu-button"><i class="ri-book-open-line"></i> YOUNGBXY ROPLAY</a>
+      <a href="report.html" class="menu-button"><i class="ri-image-line"></i> REPORT MEMBER</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    
+    Website <span>Youngbxy</span> | Powered by <span>Jox</span> | © 2022
+  </div>
+
+  <script>
+    function createSnowflake() {
+      if (Math.random() > 0.8) return;
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.innerHTML = "❄";
+      document.body.appendChild(snowflake);
+
+      let size = Math.random() * 15 + 5;
+      let left = Math.random() * window.innerWidth;
+      let duration = Math.random() * 4 + 2;
+      let xMovement = Math.random() * 20 - 10;
+
+      snowflake.style.left = `${left}px`;
+      snowflake.style.fontSize = `${size}px`;
+      snowflake.style.animationDuration = `${duration}s`;
+      snowflake.style.animationTimingFunction = "linear";
+      snowflake.style.animationName = "fall";
+      snowflake.style.transform = `translateX(${xMovement}vw)`;
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, duration * 1000);
+    }
+
+    setInterval(createSnowflake, 300);
+
+    // ป้องกันการกด F12 และคลิกขวา
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 123) e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>

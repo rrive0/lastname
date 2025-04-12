@@ -1,0 +1,444 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #363636; /* Dark mode default */
+    color: #e0e0e0; /* Dark mode text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.member-list {
+    background: #000000;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    transition: background 0.3s ease;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #e0e0e0; /* Dark mode default */
+    transition: color 0.3s ease;
+}
+
+.search-container {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 1px solid #37474f; /* Dark mode border */
+    border-radius: 6px;
+    background: #000000; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text */
+    font-size: 1em;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search-input::placeholder {
+    color: #90a4ae; /* Dark mode placeholder */
+}
+
+.search-input:focus {
+    border-color: #546e7a;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #90a4ae; /* Dark mode icon */
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background: #3e3f3f; /* Dark mode default */
+    border: 1px solid #37474f; /* Dark mode border */
+    border-radius: 6px;
+    color: #e0e0e0; /* Dark mode text */
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.member.hidden {
+    display: none;
+}
+
+.member:hover {
+    background: #37474f;
+    border-color: #455a64;
+}
+
+.member .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.member .content {
+    flex-grow: 1;
+}
+
+.member .name {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #e0e0e0; /* Dark mode default */
+    transition: color 0.3s ease;
+}
+
+.member .link {
+    font-size: 0.9em;
+    color: #b0bec5; /* Dark mode link */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.member .link:hover {
+    color: #e0e0e0;
+    text-decoration: underline;
+}
+
+.fb-icon {
+    width: 28px;
+    height: 28px;
+    background: #546e7a; /* Dark mode default */
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    margin-left: 15px;
+    transition: background 0.3s ease;
+}
+
+.fb-icon:hover {
+    background: #607d8b;
+}
+
+.credit {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.85em;
+    color: #90a4ae; /* Dark mode default */
+    padding-top: 15px;
+    border-top: 1px solid #37474f; /* Dark mode border */
+    transition: color 0.3s ease, border-top-color 0.3s ease;
+}
+
+.credit a {
+    color: #b0bec5; /* Dark mode link */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.credit a:hover {
+    color: #e0e0e0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background: #546e7a; /* Dark mode default */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.pagination button:disabled {
+    background: #455a64; /* Dark mode disabled */
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #607d8b;
+}
+
+.pagination span {
+    font-size: 0.95em;
+    color: #b0bec5; /* Dark mode default */
+    transition: color 0.3s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: #546e7a; /* Dark mode default */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #607d8b;
+}
+
+/* Light Mode */
+body.light-mode {
+    background: #f5f6f5;
+    color: #000000;
+}
+
+body.light-mode .member-list {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode h1 {
+    color: #2c3e50;
+}
+
+body.light-mode .member {
+    background: #fff;
+    border-color: #eee;
+    color: #333;
+}
+
+body.light-mode .member:hover {
+    background: #fafafa;
+    border-color: #ddd;
+}
+
+body.light-mode .member .name {
+    color: #2c3e50;
+}
+
+body.light-mode .member .link {
+    color: #555;
+}
+
+body.light-mode .member .link:hover {
+    color: #2c3e50;
+}
+
+body.light-mode .search-input {
+    background: #fff;
+    border-color: #ddd;
+    color: #333;
+}
+
+body.light-mode .search-input::placeholder {
+    color: #999;
+}
+
+body.light-mode .search-input:focus {
+    border-color: #2c3e50;
+}
+
+body.light-mode .search-icon {
+    color: #999;
+}
+
+body.light-mode .credit {
+    color: #777;
+    border-top-color: #eee;
+}
+
+body.light-mode .credit a {
+    color: #2c3e50;
+}
+
+body.light-mode .credit a:hover {
+    color: #2c3e50;
+}
+
+body.light-mode .pagination span {
+    color: #555;
+}
+
+body.light-mode .pagination button {
+    background: #2c3e50;
+}
+
+body.light-mode .pagination button:disabled {
+    background: #ccc;
+}
+
+body.light-mode .pagination button:hover:not(:disabled) {
+    background: #34495e;
+}
+
+body.light-mode .fb-icon {
+    background: #2c3e50;
+}
+
+body.light-mode .fb-icon:hover {
+    background: #34495e;
+}
+
+body.light-mode .theme-toggle {
+    background: #2c3e50;
+}
+
+body.light-mode .theme-toggle:hover {
+    background: #34495e;
+}
+
+/* โฆษณาด้านข้าง (เดิม) */
+.floating-ad {
+    position: fixed;
+    top: 20%;
+    width: 200px;
+    background: #263238;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transition: background 0.3s ease;
+}
+
+.left-ad {
+    left: 20px;
+}
+
+.right-ad {
+    right: 20px;
+}
+
+/* โฆษณาด้านล่าง (ใหม่) */
+.bottom-ad {
+    position: fixed;
+    bottom: 20px; /* ห่างจากขอบล่าง 20px */
+    left: 50%; /* อยู่กึ่งกลาง */
+    transform: translateX(-50%); /* จัดกึ่งกลางแนวนอน */
+    width: 500px; /* ความกว้าง banner */
+    background: #263238;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transition: background 0.3s ease;
+}
+
+.ad-content {
+    text-align: center;
+    color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ad-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.ad-content h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+.ad-content p {
+    font-size: 0.9em;
+    color: #b0bec5;
+    margin: 0 0 10px;
+    transition: color 0.3s ease;
+}
+
+.ad-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #28a745; /* สีเขียว */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.ad-button:hover {
+    background: #218838; /* สีเขียวเข้มเมื่อ hover */
+}
+
+.close-ad {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: #ff4444;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 20px;
+    transition: background 0.3s ease;
+}
+
+.close-ad:hover {
+    background: #cc0000;
+}
+
+/* Light Mode Adjustments */
+body.light-mode .floating-ad,
+body.light-mode .bottom-ad {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .ad-content h3 {
+    color: #2c3e50;
+}
+
+body.light-mode .ad-content p {
+    color: #555;
+}
+
+body.light-mode .ad-button {
+    background: #28a745;
+}
+
+body.light-mode .ad-button:hover {
+    background: #218838;
+}
